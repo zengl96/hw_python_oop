@@ -30,7 +30,7 @@ class CaloriesCalculator(Calculator):
     def get_calories_remained(self):
         calories = self.jjj()
         if calories >= 0 :
-            return (f'Сегодня можно съесть что-нибудь ещё, но с общей калорийностью не более {calories} кКал')
+            return (f'В твоем запасе еще  {calories} кКал')
         else:
             return ('Хватит есть!')
 
@@ -43,18 +43,18 @@ class CashCalculator(Calculator):
     def get_today_cash_remained(self, currency):
         cash_remained = self.jjj()
         if cash_remained == 0:
-            return 'Денег нет, держись'
+            return 'Денег нет , иди на завод'
         currencies = {
             'eur': ('Euro', self.EURO_RATE),
             'usd': ('USD', self.USD_RATE),
             'rub': ('руб', self.RUB_RATE),
         }
         if currency not in currencies:
-            return 'No such currency.'
+            return 'такой валюты нет'
         sign, rate = currencies.get(currency)
         cash_remained = round(cash_remained / rate, 2)
         if cash_remained > 0:
-            return f'На сегодня осталось {cash_remained} {sign}'
+            return f'у тебя осталось {cash_remained} {sign}'
         cash_remained = abs(cash_remained)
         return f'Денег нет, держись: твой долг - {cash_remained} {sign}'
 
